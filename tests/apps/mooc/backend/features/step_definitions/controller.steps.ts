@@ -21,9 +21,9 @@ Given('I send a PUT request to {string} with body:', (route: string, body: strin
 
 Then('the response should be empty', () => {
   assert.deepStrictEqual(_response.body, {});
-})
+});
 
-BeforeAll(async() => {
+BeforeAll(async () => {
   application = new MoocBackendApp();
   await application.start();
 });
