@@ -11,7 +11,17 @@
     "npm": ">=6.14.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:mooc:backend": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules  ./src/apps/mooc/backend/start.ts",
+    "lint": "tslint src/**/*.ts{,x}",
+    "test": "npm run test:unit && npm run test:features",
+    "test:unit": "NODE_ENV=test jest",
+    "start:mooc:backend": "NODE_ENV=production node dist/src/apps/mooc/backend/start",
+    "test:features": "npm run test:mooc:backend:features",
+    "test:mooc:backend:features": "NODE_ENV=test cucumber-js -p mooc_backend",
+    "build": "npm run build:clean && npm run build:tsc && npm run build:di",
+    "build:tsc": "tsc -p tsconfig.prod.json",
+    "build:di": "copy 'src/**/*.{json,yaml,html,png}' dist/src",
+    "build:clean": "rm -r dist; exit 0"
   },
   "dependencies": {
     "body-parser": "^1.19.1",
