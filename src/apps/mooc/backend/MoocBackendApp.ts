@@ -9,7 +9,7 @@ export class MoocBackendApp {
     return this.server.listen();
   }
 
-  get HttpServer() {
+  get httpServer() {
     return this.server?.getHTTPServer();
   }
 
