@@ -7,7 +7,7 @@ export class CoursesPutController implements Controller {
   constructor(private courseCreator: CourseCreator) {}
 
   async run(req: Request, res: Response): Promise<void> {
-    const {id, name, duration} = req.body;
+    const { id, name, duration } = req.body;
 
     await this.courseCreator.run(id, name, duration);
 
