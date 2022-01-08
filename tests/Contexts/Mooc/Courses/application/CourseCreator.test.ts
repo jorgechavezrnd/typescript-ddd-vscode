@@ -12,7 +12,6 @@ beforeEach(() => {
 
 describe('CourseCreator', () => {
   it('should create a valid course', async () => {
-
     const id = 'some-id';
     const name = 'some-name';
     const duration = 'some-duration';
@@ -22,6 +21,5 @@ describe('CourseCreator', () => {
     await creator.run(id, name, duration);
 
     repository.assertLastSavedCourseIs(course);
-
   });
 });
