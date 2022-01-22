@@ -1,8 +1,8 @@
-import { Nullable } from "../../../../Shared/domain/Nullable";
-import { MongoRepository } from "../../../../Shared/infrastructure/persistence/mongo/MongoRepository";
-import { CourseId } from "../../../Shared/domain/Courses/CourseId";
-import { Course } from "../../domain/Course";
-import { CourseRepository } from "../../domain/CourseRepository";
+import { Nullable } from '../../../../Shared/domain/Nullable';
+import { MongoRepository } from '../../../../Shared/infrastructure/persistence/mongo/MongoRepository';
+import { CourseId } from '../../../Shared/domain/Courses/CourseId';
+import { Course } from '../../domain/Course';
+import { CourseRepository } from '../../domain/CourseRepository';
 
 interface CourseDocument {
     _id: string;
@@ -19,7 +19,8 @@ export class MongoCourseRepository extends MongoRepository<Course> implements Co
         const collection = await this.collection();
         const document = await collection.findOne<CourseDocument>({ _id: id.value });
 
-        return document ? Course.fromPrimitives({ name: document.name, duration: document.duration, id: id.value }) : null;
+        return document ? Course.fromPrimitives({ name: document.name, duration: document.duration, id: id.value })
+                        : null;
     }
 
     protected collectionName(): string {
